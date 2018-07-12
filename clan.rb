@@ -2,9 +2,9 @@ module Clan
 
   #groupType 0 - general, 1 - clan
   def get_clan_by_name(groupName, groupType)
-    if groupName.split(" ").length > 1
+    if groupName.match(" ")
       groupName = groupName.split(" ").map {|el| el += "%20"}.join("")
-    end 
+    end
     data = self.class.get("/GroupV2/Name/#{groupName}/#{groupType}/", headers: @headers)
   end
 
