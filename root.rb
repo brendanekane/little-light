@@ -1,7 +1,6 @@
 require 'httparty'
 require_relative 'user'
-
-# module Destiny2API
+require_relative 'clan'
 
 class Destiny_2_API_Root
   include HTTParty
@@ -10,9 +9,9 @@ class Destiny_2_API_Root
   base_uri 'www.bungie.net/Platform'
 
   include User
+  include Clan
 
   def initialize(api_key)
     @headers = {"x-api-key" => api_key,  "Content-Type" => "application/json" }
   end
 end
-# end

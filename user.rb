@@ -38,7 +38,15 @@ module User
   # https://bungie-net.github.io/multi/schema_Destiny-DestinyComponentType.html#schema_Destiny-DestinyComponentType
   #                 ^^^ Link to full list of components ^^^
 
+
+  # only 100 & 200 query strings will produce results here
   def get_destiny_profile(destinyMembershipId, membershipType, component)
     data = self.class.get("/Destiny2/#{membershipType}/Profile/#{destinyMembershipId}?components=#{component}", headers: @headers)
+  end
+
+
+  # only 200 query strings will produce results here
+  def get_character(destinyMembershipId, membershipType, characterId, component)
+    data = self.class.get("/Destiny2/#{membershipType}/Profile/#{destinyMembershipId}/Character/#{characterId}?components=#{component}", headers: @headers)
   end
 end
