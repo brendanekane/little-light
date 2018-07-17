@@ -2,15 +2,15 @@
 A prerequisite to using this gem is having a valid api-key from Bungie. Without an api-key you will not be able to call any methods successfully.
 
 To start off you need to instantiate the Client and supply it with an api-key as a parameter.
-
+```ruby
 client = LittleLight::Client("api-key")
-
+```
 Once you have instantiated the client you can call any methods in the lib folder on the client with the required parameters
 
 ex/
-
+```ruby
 client.search_bungie_net_by_username("robbinthehood") => returns an object with of all usernames containing the string "robbinthehood"
-
+```
 You can find all the methods available to use in the lib folder, along with comments about what you should expect it to return, required params, as well as some links to destiny api docs for certain params.
 
 ## Installation
