@@ -109,7 +109,7 @@ module LittleLight
        )
     end
 
-
+    # returns the stats of a specific item instance
     def get_item(destinyMembershipId, membershipType, itemInstanceId)
       data = self.class.get(
         "/Destiny2/{membershipType}/Profile/{destinyMembershipId}/Item/"\
@@ -118,7 +118,8 @@ module LittleLight
       )
     end
 
-
+    # the next two get_user methods return info relevant to the specific clans they're in
+    # but are user methods not clan methods
     def get_user_clan_theme
       data = self.class.get(
         "/GroupV2/GetAvailableThemes/",
