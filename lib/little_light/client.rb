@@ -2,7 +2,7 @@ require 'httparty'
 require_relative 'user'
 require_relative 'clan'
 module LittleLight
-  module Client
+  class Client
     include HTTParty
     format :json
 
