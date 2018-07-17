@@ -1,15 +1,35 @@
-Gem::Specification.new do |s|
-  s.name        = 'Little-Light'
-  s.version     = '0.1.0'
-  s.executables << 'little_light'
-  s.licenses    = ['MIT']
-  s.summary     = "Ruby Wrapper for Destiny 2 API"
-  s.description = "A wrapper written in Ruby to query Bungie.net's Destiny 2 API"
-  s.authors     = ["Brendan Kane"]
-  s.email       = 'brendanekane@example.com'
-  s.files = Dir['lib/   *.rb'] + Dir['bin/*']
-  s.files += Dir['[A-Z]*'] + Dir['test/**/*']
-  s.files.reject! { |fn| fn.include? "CVS" }
-  s.homepage    = 'https://rubygems.org/gems/littlelight'
-  s.metadata    = { "source_code_uri" => "https://github.com/brendanekane/little_light" }
+
+lib = File.expand_path("../lib", __FILE__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+require "little_light/version"
+
+Gem::Specification.new do |spec|
+  spec.name          = "little_light"
+  spec.version       = LittleLight::VERSION
+  spec.authors       = ["Brendan"]
+  spec.email         = ["brendanekane@gmail.com"]
+
+  spec.summary       = "Ruby wrapper for Destiny 2 API"
+  spec.homepage      = "https://github.com/brendanekane/little_light"
+  spec.license       = "MIT"
+
+  # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
+  # to allow pushing to a single host or delete this section to allow pushing to any host.
+  if spec.respond_to?(:metadata)
+    spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
+  else
+    raise "RubyGems 2.0 or newer is required to protect against " \
+      "public gem pushes."
+  end
+
+  spec.files         = `git ls-files -z`.split("\x0").reject do |f|
+    f.match(%r{^(test|spec|features)/})
+  end
+  spec.bindir        = "exe"
+  spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
+  spec.require_paths = ["lib"]
+
+  spec.add_development_dependency "bundler", "~> 1.16"
+  spec.add_development_dependency "rake", "~> 10.0"
+  spec.add_development_dependency "rspec", "~> 3.0"
 end
