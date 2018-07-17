@@ -47,7 +47,8 @@ module User
 
   def get_linked_profiles(destinyMembershipId, membershipType)
     data = self.class.get(
-      "/Destiny2/#{membershipType}/Profile/#{destinyMembershipId}/LinkedProfiles/",
+      "/Destiny2/#{membershipType}/Profile/#{destinyMembershipId}"\
+      "/LinkedProfiles/",
        headers: @headers
      )
   end
@@ -55,9 +56,10 @@ module User
 
   #groupType 0 - general, 1 - clan
   #filter 0 - All, 1 - Founded, 2 - Not Founded
-  def get_clans_for_user(destinyMembershipId, membershipType, groupType, filter)
+  def get_groups_for_user(destinyMembershipId, membershipType, groupType, filter)
     data = self.class.get(
-      "/GroupV2/User/#{membershipType}/#{destinyMembershipId}/#{filter}/#{groupType}/",
+      "/GroupV2/User/#{membershipType}/#{destinyMembershipId}"\
+      "/#{filter}/#{groupType}/",
        headers: @headers
      )
   end
@@ -69,18 +71,27 @@ module User
   # only 100 & 200 query strings will produce results here
   def get_destiny_profile(destinyMembershipId, membershipType, component)
     data = self.class.get(
-      "/Destiny2/#{membershipType}/Profile/#{destinyMembershipId}?components=#{component}",
+      "/Destiny2/#{membershipType}/Profile/#{destinyMembershipId}"\
+      "?components=#{component}",
        headers: @headers
      )
   end
 
 
   # only 200 query strings will produce results here
+  # for query strings that return a JSON object that has a key of
+  # privacy pointing to 2 - means that user need to be authenticated via
+  # OAuth 2.0 or user has privacy settings on.
+  # No real plans to implement OAuth in this gem.
   def get_character(destinyMembershipId, membershipType, characterId, component)
     data = self.class.get(
-      "/Destiny2/#{membershipType}/Profile/#{destinyMembershipId}/
-      Character/#{characterId}?components=#{component}",
+      "/Destiny2/#{membershipType}/Profile/#{destinyMembershipId}"\
+      "/Character/#{characterId}?components=#{component}",
        headers: @headers
      )
+  end
+
+
+  def get_item()
   end
 end
