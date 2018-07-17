@@ -37,11 +37,28 @@ module LittleLight
        )
     end
 
+    # returns the same as the method above, doesn't require any parms to be passed in but does require a user to be
+    # signed in via Oauth2
+    def get_current_user_membership
+      data = self.class.get(
+        "/User/GetMembershipsForCurrentUser/",
+        headers: @headers
+      )
+    end
+
+
+    def get_user_themes
+      data = self.class.get(
+        "/User/GetAvailableThemes/",
+        headers: @headers
+      )
+    end
+
 
     def get_user_partnerships(destinyMembershipId)
       data = self.class.get(
         "/User/#{destinyMembershipId}/Partnerships/",
-         headers: @headers
+        headers: @headers
        )
     end
 
@@ -93,7 +110,28 @@ module LittleLight
     end
 
 
-    def get_item()
+    def get_item(destinyMembershipId, membershipType, itemInstanceId)
+      data = self.class.get(
+        "/Destiny2/{membershipType}/Profile/{destinyMembershipId}/Item/"\
+        "{itemInstanceId}/",
+        headers: @headers
+      )
+    end
+
+
+    def get_user_clan_theme
+      data = self.class.get(
+        "/GroupV2/GetAvailableThemes/",
+        headers: @headers
+      )
+    end
+
+
+    def get_user_clan_avatar
+      data = self.class.get(
+        "/GroupV2/GetAvailableAvatars/",
+        headers: @headers
+      )
     end
   end
 end
