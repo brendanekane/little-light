@@ -1,6 +1,8 @@
 require 'httparty'
 require_relative 'user'
 require_relative 'clan'
+require_relative 'vendor'
+
 module LittleLight
   class Client
     include HTTParty
