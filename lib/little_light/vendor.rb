@@ -7,8 +7,8 @@ module LittleLight
 
     def get_all_vendors(destinyMembershipId, membershipType, characterId)
       data = self.class.get(
-        "/Destiny2/{membershipType}/Profile/{destinyMembershipId}/"\
-        "Character/{characterId}/Vendors/",
+        "/Destiny2/#{membershipType}/Profile/#{destinyMembershipId}/"\
+        "Character/#{characterId}/Vendors/",
         headers: @headers
       )
     end
@@ -19,8 +19,8 @@ module LittleLight
 
     def get_one_vendor(destinyMembershipId, membershipType, characterId, vendorHash)
       data = self.class.get(
-        "/Destiny2/{membershipType}/Profile/{destinyMembershipId}/"\
-        "Character/{characterId}/Vendors/{vendorHash}/",
+        "/Destiny2/#{membershipType}/Profile/#{destinyMembershipId}/"\
+        "Character/#{characterId}/Vendors/#{vendorHash}/",
         header: @headers
       )
     end
