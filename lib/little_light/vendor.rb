@@ -5,10 +5,10 @@ module LittleLight
     # requires a components query string
     # https://bungie-net.github.io/multi/schema_Destiny-DestinyComponentType.html#schema_Destiny-DestinyComponentType
 
-    def get_all_vendors(destinyMembershipId, membershipType, characterId)
+    def get_all_vendors(destinyMembershipId, membershipType, characterId, component)
       data = self.class.get(
         "/Destiny2/#{membershipType}/Profile/#{destinyMembershipId}/"\
-        "Character/#{characterId}/Vendors/",
+        "Character/#{characterId}/Vendors?components=#{component}",
         headers: @headers
       )
     end
@@ -20,7 +20,7 @@ module LittleLight
     def get_one_vendor(destinyMembershipId, membershipType, characterId, vendorHash)
       data = self.class.get(
         "/Destiny2/#{membershipType}/Profile/#{destinyMembershipId}/"\
-        "Character/#{characterId}/Vendors/#{vendorHash}/",
+        "Character/#{characterId}/Vendors/#{vendorHash}?components=#{component}",
         header: @headers
       )
     end
