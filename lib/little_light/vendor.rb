@@ -1,5 +1,5 @@
 module LittleLight
-  module Vendors
+  module Vendor
 
     # this will return all possible vendors that have a rotating inventory.
     # requires a components query string
